@@ -1,9 +1,13 @@
 const asyncHandler = require('express-async-handler')
-const {sequelize,Seasonal} = require('../models')
+const {sequelize,Seasonal,Episode} = require('../models')
 
 const getSeasonal =asyncHandler(async(req,res)=>{
-    const seasonal = await Seasonal.findAll();
-    return res.json(seasonal);
+    const seasonal = await Seasonal.findAll(
+        {
+            include:[{model:Episode, as:"episode"}]
+        }
+    );
+    return res.json({seasonal:seasonal});
 })
 
 const getSeasonalDetail=asyncHandler(async(req,res)=>{
@@ -11,10 +15,10 @@ const getSeasonalDetail=asyncHandler(async(req,res)=>{
     const seasonal = await Seasonal.findAll(
         {
             where:{uuid},
-            include:"episode"
+            include:[{model:Episode, as:"episode"}]
         }
     );
-    return res.json(seasonal);
+    return res.json({seasonal:seasonal});
 })
 
 const createSeasonal=asyncHandler(async(req,res)=>{

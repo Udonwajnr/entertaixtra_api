@@ -6,11 +6,19 @@ const asyncHandler = require('express-async-handler')
 // access public
 const getMovies = asyncHandler(async(req,res)=>{
     
-    // const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
     const movies = await Movie.findAll()
-    return res.json(movies)
+    return res.json({movie:movies})
 })
 
+const getMoviesDetail=asyncHandler(async(req,res)=>{
+    const uuid = req.params.uuid
+    const movies = await Movie.findAll(
+        {
+            where:{uuid},
+        }
+    );
+    return res.json({movies:movies});
+})
 // @desc get all movies 
 //  route get /api/movie
 // access public
@@ -18,7 +26,7 @@ const getMovies = asyncHandler(async(req,res)=>{
 const createMovie = asyncHandler(async(req,res)=>{
     const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
     const movie = await Movie.create({title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors})
-    return res.json(movie)
+    return res.json({movie:movie})
 })
 
 const updateMovie = asyncHandler(async(req,res)=>{
@@ -52,4 +60,4 @@ const deleteMovie = asyncHandler(async(req,res)=>{
     return res.json({message:`${req.body.title} has been deleted`})
 })
 
-module.exports={getMovies,createMovie,updateMovie,deleteMovie}
+module.exports={getMovies,getMoviesDetail,createMovie,updateMovie,deleteMovie}

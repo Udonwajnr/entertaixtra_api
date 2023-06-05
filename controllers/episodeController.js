@@ -3,19 +3,35 @@ const {sequelize, Episode,Seasonal} = require('../models')
 
 
 const getEpisode = asyncHandler(async(req,res)=>{
-    const episodes = await Episode.findAll();
-    return res.json(episodes)
+    const episodes = await Episode.findAll( {
+        // where:{uuid},
+        include:[{model:Seasonal,as:"seasonal"}]
+    });
+    
+    return res.json({episodes:episodes})
 } )
 
+const getEpisodeDetails=asyncHandler(async(req,res)=>{
+    const uuid = req.params.uuid
+    const episode = await Episode.findAll(
+        {
+            where:{uuid},
+            include:[{model:Seasonal,as:"seasonal"}]
+        },
+        
+    )
+    return res.json({episode:episode})
+})
 const createEpisode=asyncHandler(async(req,res)=>{
     const {seasonalUuid, title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
     const seasonal = await Seasonal.findOne({
         where:{uuid:seasonalUuid}
     }) 
     const episodes = await Episode.create({title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,seasonalId:seasonal.id})
-    
     return res.json(episodes)
 })
+
+
 
 
 const updateEpisode = asyncHandler(async(req,res)=>{
@@ -50,4 +66,4 @@ const deleteEpisode = asyncHandler(async(req,res)=>{
 })  
 
 
-module.exports={getEpisode,createEpisode,updateEpisode,deleteEpisode}
+module.exports={getEpisode,getEpisodeDetails,createEpisode,updateEpisode,deleteEpisode}
