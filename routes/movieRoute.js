@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const {getMovies,getMoviesDetail,createMovie,updateMovie,deleteMovie} = require("../controllers/moviesController")
+const {getMovies,getMoviesDetail,getMoviesSearch,createMovie,updateMovie,deleteMovie} = require("../controllers/moviesController")
 
 router.route("/").get(getMovies)
+router.route("/search").get(getMoviesSearch)
 router.route("/:uuid").get(getMoviesDetail)
 router.route("/").post(createMovie)
 router.route("/:uuid").put(updateMovie)

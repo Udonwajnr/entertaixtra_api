@@ -4,6 +4,15 @@ const asyncHandler = require('express-async-handler')
 // @desc get all movies 
 //  route get /api/movie
 // access public
+const getMoviesSearch = asyncHandler(async(req,res)=>{
+   const movies = await Movie.findAll({
+    where:{
+        title:req.query.title
+    }
+   });
+   return res.json(movies)
+})
+
 const getMovies = asyncHandler(async(req,res)=>{
     
     const movies = await Movie.findAll()
@@ -60,4 +69,4 @@ const deleteMovie = asyncHandler(async(req,res)=>{
     return res.json({message:`${req.body.title} has been deleted`})
 })
 
-module.exports={getMovies,getMoviesDetail,createMovie,updateMovie,deleteMovie}
+module.exports={getMovies,getMoviesDetail,getMoviesSearch,createMovie,updateMovie,deleteMovie}

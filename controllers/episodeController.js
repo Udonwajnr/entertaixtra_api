@@ -7,7 +7,6 @@ const getEpisode = asyncHandler(async(req,res)=>{
         // where:{uuid},
         include:[{model:Seasonal,as:"seasonal"}]
     });
-    
     return res.json({episodes:episodes})
 } )
 
@@ -22,6 +21,7 @@ const getEpisodeDetails=asyncHandler(async(req,res)=>{
     )
     return res.json({episode:episode})
 })
+
 const createEpisode=asyncHandler(async(req,res)=>{
     const {seasonalUuid, title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
     const seasonal = await Seasonal.findOne({
