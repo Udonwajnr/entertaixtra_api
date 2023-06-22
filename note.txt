@@ -1,0 +1,31 @@
+episode and movie(just take out the uuid)
+{
+  "title":"Bennie with old woma\n",
+  "seasonalUuid":"0f957ea1-af49-4225-ac8c-c6c07e59d478",
+  "year":"2001",
+  "genre":["action", "comedy"],
+  "language":"english",
+  "description":"This is john wick",
+  "image":"image",
+  "poster_image":"image",
+  "trailer_url":"url",
+  "length_of_video":"1hr",
+  "file_link":"heyyy",
+  "subtitle_link":"heyy",
+  "actors":["john", "wick"]
+}
+
+
+seasonal
+{
+  "title":"Bennie with the big yansh",
+  "year":"2001",
+  "genre":["action", "comedy"],
+  "language":"english",
+  "description":"This is john wick",
+  "image":"image",
+  "poster_image":"image",
+  "trailer_url":"url",
+  "number_of_episodes":"45",
+  "actors":["john", "wick"]
+}

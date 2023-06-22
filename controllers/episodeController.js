@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler")
 const {sequelize, Episode,Seasonal} = require('../models')
-
+const {validationResult} =require('express-validator')
 
 const getEpisode = asyncHandler(async(req,res)=>{
     const episodes = await Episode.findAll( {
@@ -23,6 +23,10 @@ const getEpisodeDetails=asyncHandler(async(req,res)=>{
 })
 
 const createEpisode=asyncHandler(async(req,res)=>{
+    const error = validationResult(req)
+    if(!error.isEmpty()){
+        return res.status(400).json({error:error.array()})
+    }
     const {seasonalUuid, title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
     const seasonal = await Seasonal.findOne({
         where:{uuid:seasonalUuid}

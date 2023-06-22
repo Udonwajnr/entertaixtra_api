@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const {sequelize,Seasonal,Episode} = require('../models')
+const {validationResult} = require('express-validator')
 
 const getSeasonal =asyncHandler(async(req,res)=>{
     const seasonal = await Seasonal.findAll(
@@ -22,6 +23,10 @@ const getSeasonalDetail=asyncHandler(async(req,res)=>{
 })
 
 const createSeasonal=asyncHandler(async(req,res)=>{
+    const error = validationResult(req)
+    if(!error.isEmpty()){
+        return res.status(400).json({error:error.array()})
+    }
    const {title,year,genre,language,description,image,poster_image,trailer_url,actors,number_of_episodes} = req.body;
    const seasonal = await Seasonal.create({title,year,genre,language,description,image,poster_image,trailer_url,actors,number_of_episodes});
    return res.json(seasonal); 

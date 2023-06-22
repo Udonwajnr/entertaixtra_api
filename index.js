@@ -1,22 +1,25 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
 const {sequelize} = require('./models')
+const cookieParser = require('cookie-parser')
 let cors= require('cors')
 
 const app=express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors())
+
 app.use('/api/movies',require("./routes/movieRoute"))
-// try making it ('api/seasonalMovie/episode)
 app.use('/api/episodes', require("./routes/episodeRoute"))
 app.use('/api/seasonal', require("./routes/seasonalRoute"))
+app.use('/api/users',require('./routes/userRoute'))
 
 app.listen(port,async()=>{
     console.log(`app is listening on port ${port}`)
     // during production come and change it abeg
     // for changes use  
-    // await sequelize.sync(alter:true)
+    await sequelize.sync({alter:true})
   
     // or
   
@@ -25,5 +28,5 @@ app.listen(port,async()=>{
 
     // for development
     // after getting data
-    await sequelize.authenticate()
+    // await sequelize.authenticate()
 })

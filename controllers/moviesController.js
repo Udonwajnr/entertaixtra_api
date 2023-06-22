@@ -1,5 +1,6 @@
 const {sequelize,Movie} = require("../models")
 const asyncHandler = require('express-async-handler')
+const {validationResult} = require('express-validator')
 
 // @desc get all movies 
 //  route get /api/movie
@@ -33,6 +34,12 @@ const getMoviesDetail=asyncHandler(async(req,res)=>{
 // access public
 
 const createMovie = asyncHandler(async(req,res)=>{
+    const error = validationResult(req)
+
+    if(!error.isEmpty()){
+        return res.status(400).json({error:error.array()})
+      }
+
     const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
     const movie = await Movie.create({title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors})
     return res.json({movie:movie})

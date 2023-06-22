@@ -43,14 +43,23 @@ module.exports = (sequelize, DataTypes) => {
     image:{
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
     },
     poster_image:{
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
     },
     trailer_url:{
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
     },
     length_of_video:{
       type:DataTypes.STRING,
@@ -59,10 +68,16 @@ module.exports = (sequelize, DataTypes) => {
     file_link:{
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
     },
     subtitle_link:{
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
     },
     actors:{
       type:DataTypes.ARRAY(DataTypes.STRING),

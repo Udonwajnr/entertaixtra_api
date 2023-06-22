@@ -43,14 +43,23 @@ module.exports = (sequelize, DataTypes) => {
     image:{
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
     },
     poster_image:{
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
     },
     trailer_url:{
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
     },
     number_of_episodes:{
       // mae use of foreign keys here linking episode to seasonal
