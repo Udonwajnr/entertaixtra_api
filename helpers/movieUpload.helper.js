@@ -4,7 +4,7 @@ const path = require('path')
 const s3 = require('../utils/s3.utills')
 
 const videoFilter = (req, file, cb) => {
-    const fileExts = [".mp4","avi","mkv"]
+    const fileExts = [".mp4",".avi",".mkv"]
 
     const isAllowedExt = fileExts.includes(path.extname(file.originalname.toLowerCase()))
     
@@ -35,9 +35,9 @@ const upload = multer({
         }
     }),
     fileFilter: videoFilter,
-    limits:{
-        fileSize:1024 * 1024 * 10
-    }
+    // limits:{
+    //     fileSize:1024 * 1024 * 1024 *3
+    // }
 })
     
 const uploadMovies = upload.single("movies")
