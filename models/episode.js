@@ -11,81 +11,91 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({Seasonal}) {
       // define association here
+
       this.belongsTo(Seasonal,{foreignKey:"seasonalId",as:'seasonal'})
+    }
+    toJSON(){
+      return {...this.get(),id:undefined}
     }
   }
   Episode.init({
-     uuid:{
-    type:DataTypes.UUID,
-    defaultValue:DataTypes.UUIDV4
-  },
-    title:{    
-    type:DataTypes.STRING,
-    allowNull:false,
-    unique:true
-  },
+    uuid: {
+      type:DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4
+    },
+    title: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      unique:true
+    },
     year:{
       type:DataTypes.STRING,
-      allowNull:false,
+      allowNull:false
     },
-    genre:{ 
+    genre: {
       type:DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:false,
+      allowNull:false
+
     },
-    language:{ 
+    language: {
+      type:DataTypes.STRING,
+      allowNull:false
+
+    },
+    description: {
+      type:DataTypes.STRING,
+      allowNull:false
+
+    },
+    length_of_video: {
+      type:DataTypes.STRING,
+      allowNull:false
+
+    },
+    image: {
       type:DataTypes.STRING,
       allowNull:false,
+      validate:{
+        isUrl:true
+      }
+
     },
-    description:{
-      type:DataTypes.TEXT,
-      allowNull:false,
-    },
-    image:{
+    poster_image: {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
         isUrl:true
       }
     },
-    poster_image:{
+    trailer_url: {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
         isUrl:true
       }
     },
-    trailer_url:{
+    file_link: {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
         isUrl:true
       }
     },
-    length_of_video:{
-      type:DataTypes.STRING,
-      allowNull:false,
-    },
-    file_link:{
+    subtitle_link: {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
         isUrl:true
       }
     },
-    subtitle_link:{
-      type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        isUrl:true
-      }
-    },
-    actors:{
+    actors: {
       type:DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:false,
-    },
-  }, {
+      allowNull:false
+    }
+  },
+  
+  {
     sequelize,
-    tableName:'episode',
     modelName: 'Episode',
   });
   return Episode;

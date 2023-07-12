@@ -12,27 +12,29 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    toJSON(){
+      return {...this.get(),id:undefined}
+    }
   }
   User.init({
     username: {
       type:DataTypes.STRING,
-      allowNull:false,
-      unique:true
+      allowNull:false
     },
     email:{
       type:DataTypes.STRING,
-      isEmail:true,
-      unique:true,
-      allowNull:false
-      },
+      allowNull:false,
+      validate:{
+        isEmail:true
+      }
+    },
     password:{
-      type: DataTypes.STRING,
-      allowNull:false
-    }
+      type:DataTypes.STRING,
+      allowNull:false,
+    },
   }, {
     sequelize,
     modelName: 'User',
-    tableName:'user',
   });
   return User;
 };

@@ -10,69 +10,66 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({Episode}) {
+      this.hasMany(Episode,{foreignKey:"seasonalId",as:'episode'})
       // define association here
-      this.hasMany(Episode,{foreignKey:'seasonalId', as:'episode'})
+    }
+    toJSON(){
+      return {...this.get(),id:undefined}
     }
   }
- Seasonal.init({
-  uuid:{
-    type:DataTypes.UUID,
-    defaultValue:DataTypes.UUIDV4
-  },
-    title:{    
-    type:DataTypes.STRING,
-    allowNull:false,
-    unique:true
-  },
-    year:{
+  Seasonal.init({
+    uuid: {
+      type:DataTypes.UUID,
+      allowNull:false,
+      defaultValue:DataTypes.UUIDV4
+    },
+    title:  {
+      type:DataTypes.STRING,
+      allowNull:false,
+      unique:true
+    },
+
+    year:  {
       type:DataTypes.STRING,
       allowNull:false
     },
-    genre:{ 
+    genre:  {
       type:DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:false,
+      allowNull:false
     },
-    language:{ 
+    language:  {
       type:DataTypes.STRING,
-      allowNull:false,
+      allowNull:false
     },
-    description:{
-      type:DataTypes.TEXT,
-      allowNull:false,
+    description:  {
+      type:DataTypes.STRING,
+      allowNull:false
     },
     image:{
       type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        isUrl:true
-      }
+      allowNull:false
     },
-    poster_image:{
+    poster_image:  {
       type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        isUrl:true
-      }
+      allowNull:false
     },
-    trailer_url:{
+    trailer_url:  {
       type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        isUrl:true
-      }
+      allowNull:false
     },
-    number_of_episodes:{
-      // mae use of foreign keys here linking episode to seasonal
+    number_of_episodes:  {
       type:DataTypes.STRING,
-      allowNull:false,
+      allowNull:false
     },
-    actors:{
+    actors:  {
       type:DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:false,
-    },
+      allowNull:false
+    }
+    
+
+    
   }, {
     sequelize,
-    tableName:'seasonal',
     modelName: 'Seasonal',
   });
   return Seasonal;
