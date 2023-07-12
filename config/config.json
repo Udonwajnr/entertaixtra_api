@@ -14,10 +14,6 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "udonwa",
-    "password": "udonwa10",
-    "database": "entertainxtra_db",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable":"'postgres://udonwa:udonwa10@localhost:5432/entertainxtra_db'"
   }
 }
