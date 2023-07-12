@@ -14,6 +14,6 @@
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable":"postgres://udonwa:udonwa10@localhost:5432/entertainxtra_db"
+    "use_env_variable":"postgres://udonwa:udonwa10@127.0.0.1:5432:5432/entertainxtra_db"
   }
 }
