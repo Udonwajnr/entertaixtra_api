@@ -38,7 +38,7 @@ const createEpisode=asyncHandler(async(req,res)=>{
 
 const updateEpisode = asyncHandler(async(req,res)=>{
     const uuid = req.params.uuid
-    const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,seasonalId} = req.body
+    const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,video_quality,seasonalId} = req.body
     const episode = await Episode.findOne({where:{uuid:uuid}})
     episode.seasonalId = seasonalId
     episode.title=title
