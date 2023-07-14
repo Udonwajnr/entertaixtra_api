@@ -53,7 +53,7 @@ const updateEpisode = asyncHandler(async(req,res)=>{
     episode.file_link = file_link
     episode.subtitle_link = subtitle_link
     episode.actors = actors
-    movie.video_quality = video_quality
+    episode.video_quality = video_quality
     await episode.save()
     return res.json(episode);
 })
