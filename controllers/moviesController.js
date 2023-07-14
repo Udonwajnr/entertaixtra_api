@@ -40,14 +40,14 @@ const createMovie = asyncHandler(async(req,res)=>{
         return res.status(400).json({error:error.array()})
       }
 
-    const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
-    const movie = await Movie.create({title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors})
+    const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,video_quality} = req.body
+    const movie = await Movie.create({title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,video_quality})
     return res.json({movie:movie})
 })
 
 const updateMovie = asyncHandler(async(req,res)=>{
     const uuid = req.params.uuid
-    const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
+    const {title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,video_quality} = req.body
     const movie = await Movie.findOne({where:{uuid:uuid}})
     movie.title=title
     movie.year=year
@@ -61,6 +61,7 @@ const updateMovie = asyncHandler(async(req,res)=>{
     movie.file_link = file_link
     movie.subtitle_link = subtitle_link
     movie.actors = actors
+    movie.video_quality = video_quality
     await movie.save()
     return res.json(movie)
 })

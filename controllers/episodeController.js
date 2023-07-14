@@ -27,15 +27,13 @@ const createEpisode=asyncHandler(async(req,res)=>{
     if(!error.isEmpty()){
         return res.status(400).json({error:error.array()})
     }
-    const {seasonalUuid, title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors} = req.body
+    const {seasonalUuid, title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,video_quality} = req.body
     const seasonal = await Seasonal.findOne({
         where:{uuid:seasonalUuid}
     }) 
-    const episodes = await Episode.create({title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,seasonalId:seasonal.id})
+    const episodes = await Episode.create({title,year,genre,language,description,image,poster_image,trailer_url,length_of_video,file_link,subtitle_link,actors,video_quality,seasonalId:seasonal.id})
     return res.json(episodes)
 })
-
-
 
 
 const updateEpisode = asyncHandler(async(req,res)=>{
@@ -55,6 +53,7 @@ const updateEpisode = asyncHandler(async(req,res)=>{
     episode.file_link = file_link
     episode.subtitle_link = subtitle_link
     episode.actors = actors
+    movie.video_quality = video_quality
     await episode.save()
     return res.json(episode);
 })

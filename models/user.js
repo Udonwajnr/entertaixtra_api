@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       return {...this.get(),id:undefined}
     }
   }
+  
   User.init({
     username: {
       type:DataTypes.STRING,

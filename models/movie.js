@@ -88,6 +88,10 @@ module.exports = (sequelize, DataTypes) => {
         isUrl:true
       }
     },
+    video_quality:{
+      type:DataTypes.STRING,
+      allowNull:false
+    },
     actors: {
       type:DataTypes.ARRAY(DataTypes.STRING),
       allowNull:false

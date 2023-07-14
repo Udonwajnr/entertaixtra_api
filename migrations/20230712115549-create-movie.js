@@ -77,6 +77,10 @@ module.exports = {
         isUrl:true
       }
     },
+    video_quality:{
+      type:Sequelize.STRING,
+      allowNull:false
+    },
     actors: {
       type:Sequelize.ARRAY(Sequelize.STRING),
       allowNull:false
