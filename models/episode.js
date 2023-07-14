@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({Seasonal}) {
       // define association here
-
-      this.belongsTo(Seasonal,{foreignKey:"seasonalId",as:'seasonal'})
+      this.belongsTo(Seasonal,{foreignKey:"seasonalId",as:'seasonal',onDelete:"CASCADE"})
     }
     toJSON(){
       return {...this.get(),id:undefined}
