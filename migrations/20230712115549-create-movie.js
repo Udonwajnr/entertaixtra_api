@@ -79,7 +79,8 @@ module.exports = {
     },
     video_quality:{
       type:Sequelize.STRING,
-      allowNull:false
+      allowNull:false,
+      defaultValue:"HD"
     },
     actors: {
       type:Sequelize.ARRAY(Sequelize.STRING),

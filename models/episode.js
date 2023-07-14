@@ -90,7 +90,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     video_quality:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
+      defaultValue:"HD"
     },
     actors: {
       type:DataTypes.ARRAY(DataTypes.STRING),
