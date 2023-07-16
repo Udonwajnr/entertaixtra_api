@@ -14,7 +14,7 @@ function sanitizeFile(file, cb) {
     );
 
     // Mime type must be an image
-    const isAllowedMimeType = file.mimetype.startsWith("application/");
+    const isAllowedMimeType = file.mimetype.startsWith("application/") ||   file.mimetype.startsWith("text/plain") ;
 
     if (isAllowedExt && isAllowedMimeType) {
         return cb(null, true); // no errors
