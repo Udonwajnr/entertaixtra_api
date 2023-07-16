@@ -6,7 +6,7 @@ const s3 = require('../utils/s3.utills')
 
 function sanitizeFile(file, cb) {
     // Define the allowed extension
-    const fileExts = [".srt"];
+    const fileExts = [".srt",".txt"];
 
     // Check allowed extensions
     const isAllowedExt = fileExts.includes(
