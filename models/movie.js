@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
 
     },
     description: {
-      type:DataTypes.TEXT,
+      type:DataTypes.STRING(1024),
       allowNull:false,
       defaultValue:"HD"
     },

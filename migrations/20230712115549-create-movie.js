@@ -32,7 +32,7 @@ module.exports = {
 
     },
     description: {
-      type:Sequelize.TEXT,
+      type:Sequelize.STRING(2048),
       allowNull:false,
       defaultValue:"HD"
     },
