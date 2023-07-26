@@ -39,8 +39,9 @@ module.exports = {
         allowNull:false
       },
       description:  {
-        type:Sequelize.STRING,
-        allowNull:false
+      type:Sequelize.TEXT,
+      allowNull:false,
+      defaultValue:"HD"
       },
       image:{
         type:Sequelize.STRING,

@@ -25,7 +25,7 @@ app.listen(port,async()=>{
     console.log(`app is listening on port ${port}`)
     // during production come and change it abeg
     // for changes use  
-    await sequelize.sync({alter:true})
+    // await sequelize.sync({alter:true})
 
     // or
   
@@ -34,5 +34,5 @@ app.listen(port,async()=>{
 
     // for development
     // after getting data
-    // await sequelize.authenticate()
+    await sequelize.authenticate()
 })

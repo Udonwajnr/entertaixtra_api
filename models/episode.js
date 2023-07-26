@@ -42,9 +42,9 @@ module.exports = (sequelize, DataTypes) => {
 
     },
     description: {
-      type:DataTypes.STRING,
-      allowNull:false
-
+      type:DataTypes.TEXT,
+      allowNull:false,
+      defaultValue:"HD"
     },
     length_of_video: {
       type:DataTypes.STRING,

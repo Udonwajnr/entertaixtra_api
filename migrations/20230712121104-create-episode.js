@@ -37,9 +37,9 @@ module.exports = {
 
     },
     description: {
-      type:Sequelize.STRING,
-      allowNull:false
-
+      type:Sequelize.TEXT,
+      allowNull:false,
+      defaultValue:"HD"
     },
     length_of_video: {
       type:Sequelize.STRING,
