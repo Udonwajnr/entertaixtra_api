@@ -29,10 +29,10 @@ app.listen(port,async()=>{
 
     // or
   
-    await sequelize.sync({force:true})
+    // await sequelize.sync({force:true})
 
 
     // for development
     // after getting data
-    // await sequelize.authenticate()
+    await sequelize.authenticate()
 })
