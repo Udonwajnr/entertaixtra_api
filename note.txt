@@ -1,4 +1,4 @@
-episode and movie(just take out the uuid)
+episode and movie(just take out the seasonalUuid for movie)
 {
   "title":"Bennie with old woma\n",
   "seasonalUuid":"61a1d518-5281-4785-ac18-1601e4e3e733",
@@ -29,3 +29,6 @@ seasonal
   "number_of_episodes":"45",
   "actors":["john", "wick"]
 }
+
+d370e906-9a1d-497e-9668-b82f0d05fa45
+7cc74947-7e9f-4514-a2b0-4f5280f46500
