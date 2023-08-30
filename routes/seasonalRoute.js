@@ -11,11 +11,11 @@ router.route("/").post(
         check('genre').notEmpty().withMessage("genre cannot be empty"),
         check('language').notEmpty().withMessage("language cannot be empty"),
         check('description').notEmpty().withMessage("description cannot be empty"),
-        check('image').notEmpty().withMessage("image cannot be empty").isURL().withMessage("Image must be a url"),
-        check('poster_image').notEmpty().withMessage("poster cannot be empty").isURL().withMessage("poster must be a url"),
-        check('trailer_url').notEmpty().withMessage("trailer url cannot be empty").isURL().withMessage("trailer url must be a url"),
+        check('image').notEmpty().withMessage("image cannot be empty").isURL().withMessage("Image must be a url").trim(),
+        check('poster_image').notEmpty().withMessage("poster cannot be empty").isURL().withMessage("poster must be a url").trim(),
+        check('trailer_url').notEmpty().withMessage("trailer url cannot be empty").isURL().withMessage("trailer url must be a url").trim(),
         check('number_of_episodes').notEmpty().withMessage("number of episodes url cannot be empty"),
-        check('actors').notEmpty().withMessage("actors cannot be empty"),
+        check('actors').notEmpty().withMessage("actors cannot be empty").trim(),
      ],
      createSeasonal
 )
