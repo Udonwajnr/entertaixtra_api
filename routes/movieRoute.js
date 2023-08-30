@@ -9,7 +9,7 @@ router.route("/").post(
     [
         check('title').notEmpty().withMessage("Title cannot be empty"),
         check('year').notEmpty().withMessage("Year cannot be empty"),
-        check('genre').notEmpty().withMessage("Genre cannot be empty").trim(),
+        check('genre').notEmpty().withMessage("Genre cannot be empty"),
         check('language').notEmpty().withMessage("Language cannot be empty"),
         check('description').notEmpty().withMessage("Description cannot be empty"),
         check('length_of_video').notEmpty().withMessage("Length of video cannot be empty"),
