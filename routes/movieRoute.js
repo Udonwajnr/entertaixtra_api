@@ -17,9 +17,9 @@ router.route("/").post(
         check('poster_image').notEmpty().withMessage("Poster cannot be empty").isURL().withMessage("poster must be a url").trim(),
         check('trailer_url').notEmpty().withMessage("Trailer url cannot be empty").isURL().withMessage("trailer url must be a url").trim(),
         check('file_link').notEmpty().withMessage("File link cannot be empty").isURL().withMessage("file link must be a url").trim(),
-        check('subtitle_link').notEmpty().withMessage("Subtitle link cannot be empty").isURL().withMessage("subtitle link must be a url"),
+        check('subtitle_link').notEmpty().withMessage("Subtitle link cannot be empty").isURL().withMessage("subtitle link must be a url").trim(),
         check('video_quality').notEmpty().withMessage("Video quality cannot be empty").trim(),
-        check('actors').notEmpty().withMessage("Actors cannot be empty").trim(),
+        check('actors').notEmpty().withMessage("Actors cannot be empty"),
         ],   
     createMovie,
 )

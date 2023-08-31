@@ -15,7 +15,7 @@ router.route("/").post(
         check('poster_image').notEmpty().withMessage("poster cannot be empty").isURL().withMessage("poster must be a url").trim(),
         check('trailer_url').notEmpty().withMessage("trailer url cannot be empty").isURL().withMessage("trailer url must be a url").trim(),
         check('number_of_episodes').notEmpty().withMessage("number of episodes url cannot be empty"),
-        check('actors').notEmpty().withMessage("actors cannot be empty").trim(),
+        check('actors').notEmpty().withMessage("actors cannot be empty"),
      ],
      createSeasonal
 )
